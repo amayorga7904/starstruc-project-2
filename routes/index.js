@@ -22,7 +22,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/accounts',
+    successRedirect: '/accounts/new',
     //change to what's best for your app
     //dont send user back to login
     failureRedirect: '/'

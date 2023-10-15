@@ -1,10 +1,31 @@
-const User = require('../models/user');
+const Account = require('../models/account');
 
 module.exports = {
-    index,
+    new: newAccount,
+    create,
+    index
   };
 
-  async function index(req, res) {
-    const user = await User.findById(req.params.id)
-    res.render('accounts/show', { user })
+  function newAccount(req, res) {
+    res.render('accounts/new', { errorMsg: '' })
+      }
+
+  async function create(req, res) {
+    try {
+      await Account.create(req.body);
+      res.redirect('/accounts');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
   }
+
+  function index(req, res) {
+    Account.find({})
+    .then((accounts) => {
+        res.render('accounts/index', { accounts })
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+ }
