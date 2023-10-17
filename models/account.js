@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const messageSchema = new Schema ({
-    // name: {
-    //     type: String
-    // },
+const messageSchema = new Schema({
     content: {
-        type: String 
-    }
+        type: String,
+        required: true
+    },
+
+    userAvatar: String
 }, {
-    timestamps:true
-})
+    timestamps: true
+});
+
+
 
 const accountSchema = new Schema({
   name: {

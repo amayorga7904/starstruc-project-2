@@ -13,12 +13,7 @@ module.exports = {
     try {
       const accountId = req.params.id;
       const account = await Account.findById(accountId);
-  
-      if (!account) {
-        return res.status(404).send('Account not found');
-      }
-  
-      res.render('matches/show', { account });
+      res.render('accounts/show', { account });
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');

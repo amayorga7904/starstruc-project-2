@@ -1,6 +1,5 @@
 const Account = require('../models/account');
 
-
 module.exports = {
     create
   };
@@ -11,10 +10,9 @@ module.exports = {
     const account = await Account.findById(accountId);
     account.messages.push(req.body);
     try {
-        await account.save()
-    } catch (err) {
-        console.log(err)
-    }
-    res.redirect(`/accounts/${accountId}`)
+        await account.save();
+} catch (err) {
+    console.log(err)
 }
-  
+res.redirect(`/accounts/${account._id}`)
+}

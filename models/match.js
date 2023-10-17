@@ -7,7 +7,7 @@ const messageSchema = new Schema ({
     // },
     content: {
         type: String 
-    }
+    },
    
 }, {
     timestamps:true
@@ -15,7 +15,7 @@ const messageSchema = new Schema ({
 
 const matchSchema = new Schema({
     content: String,
-    messages: [messageSchema]
+    
 }, {
     timestamps: true
 })
