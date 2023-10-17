@@ -3,13 +3,16 @@ const router = express.Router();
 
 const accountsCtrl = require('../controllers/accounts');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
-
-router.get('/', accountsCtrl.index);
 //GET /accounts
-router.get('/new', accountsCtrl.new);
+router.get('/', ensureLoggedIn, accountsCtrl.index);
+//GET /accounts/new
+router.get('/new', ensureLoggedIn, accountsCtrl.new);
+router.get('/profile', ensureLoggedIn, accountsCtrl.showProfile);
 
-//POST /accounts/show
-router.post('/', accountsCtrl.create)
+//GET /todos/:id/edit
+// router.get('/:id/edit', accountsCtrl.edit)
+//POST /accounts
+router.post('/', ensureLoggedIn, accountsCtrl.create)
 
 module.exports = router;
 

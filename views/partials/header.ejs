@@ -7,4 +7,17 @@
     <title>StarStruC</title>
 </head>
 <body>
-    
+    <nav>
+
+        <% if (user) { %>
+            <a href="/accounts/index">Home</a>
+            &nbsp;|&nbsp;
+            <a href="/accounts/profile">Your Account</a>
+            &nbsp;|&nbsp;
+            <a href="/messages">Messages</a>
+            &nbsp;|&nbsp;
+        <a href="/logout">LOG OUT</a>
+        <% } else { %>
+        <h3>Follow the Stars!</h3>
+        <% } %>
+      </nav>
