@@ -6,7 +6,7 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 //POST /accounts/:id
 // router.get('/:id', ensureLoggedIn, messagesCtrl.show)
-//GET /messages
-router.get('/', ensureLoggedIn, messagesCtrl.index)
+//matches/:id/messages
+router.post('/matches/:id/messagess', ensureLoggedIn, messagesCtrl.create)
 
 module.exports = router;

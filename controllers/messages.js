@@ -2,22 +2,19 @@ const Account = require('../models/account');
 
 
 module.exports = {
-    index,
+    create
   };
 
 
-  async function index(req, res) {
+  async function create(req, res) {
+    const accountId = req.params.id;
+    const account = await Account.findById(accountId);
+    account.messages.push(req.body);
     try {
-      const userId = req.user._id;
-      let accounts = await Account.find({ user: { $ne: userId } });
-      if (!accounts) {
-        return res.status(404).send('No accounts found');
-      }
-  
-      res.render('messages', { accounts });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Internal Server Error');
+        await account.save()
+    } catch (err) {
+        console.log(err)
     }
-  }
+    res.redirect(`/accounts/${accountId}`)
+}
   

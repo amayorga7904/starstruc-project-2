@@ -5,10 +5,25 @@ module.exports = {
     new: newAccount,
     create,
     index,
-    showProfile
+    showProfile,
+    show
   };
 
-
+  async function show(req, res) {
+    try {
+      const accountId = req.params.id;
+      const account = await Account.findById(accountId);
+  
+      if (!account) {
+        return res.status(404).send('Account not found');
+      }
+  
+      res.render('matches/show', { account });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+  }
 
   async function showProfile(req, res) {
     try {
@@ -28,7 +43,7 @@ module.exports = {
   async function newAccount(req, res) {
     let account = await Account.find({ user: req.user._id });
     if (account.length) {
-        res.redirect('/messages')
+        res.redirect('/matches')
     }
     res.render('accounts/new', { errorMsg: '' })
       }

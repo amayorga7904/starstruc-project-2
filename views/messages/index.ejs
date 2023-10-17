@@ -1,22 +1,5 @@
 <%- include('../partials/header') %>
 
-<h1>everything to see here</h1>
+<h1>dont mind me</h1>
 
-<form>
-    <% accounts.forEach(function(account) { %>
-    <div>Profile Pic
-      <img alt="avatar" src="<%= account.user.userAvatar %>" referrerpolicy="no-referrer">
-    </div>  
-    <div>First Name:
-      <p><%= account.name %></p>
-    </div>
-    <div>Born:
-      <p><%= account.born %></p>
-    </div>
-    <div>Bio:
-      <p><%= account.bio %></p>
-    </div>
-    <a href="/matches %>">Start Chatting</a>
-    <% }); %>
-</form>
 <%- include('../partials/footer') %>

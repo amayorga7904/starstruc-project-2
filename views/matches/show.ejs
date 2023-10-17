@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<h1>tired of seeing me?</h1>
+
+<section id="show-page">
+    <h3>Name: </h3>
+    <div><%= account.name %></div>
+    <h3>Born: </h3>
+    <div><%= account.born %></div>
+    <h3>Bio: </h3>
+    <div><%= account.bio %></div>
+  </section>
+<br>
+<br>
+<% if (account.messages.length) { %>
+    <% account.messages.forEach(function(message) { %>
+        <div><%= message.content %></div>
+        <% }); %>
+        <% } else { %>
+            <h5>No Messages Yet</h5>
+          <% } %>
+
+        <% if (user) { %>
+  <form method="POST"
+  action="/accounts/<%= account._id %>/messages">
+  <label>Message:</label>
+  <br>
+  <textarea name="content"></textarea>
+  <br>
+  <input type="submit" value="Send">
+</form>
+<% } %>
+<%- include('../partials/footer') %>

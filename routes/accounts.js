@@ -9,8 +9,8 @@ router.get('/', ensureLoggedIn, accountsCtrl.index);
 router.get('/new', ensureLoggedIn, accountsCtrl.new);
 router.get('/profile', ensureLoggedIn, accountsCtrl.showProfile);
 
-//GET /todos/:id/edit
-// router.get('/:id/edit', accountsCtrl.edit)
+//accounts/:id
+router.get('/:id', accountsCtrl.show)
 //POST /accounts
 router.post('/', ensureLoggedIn, accountsCtrl.create)
 
