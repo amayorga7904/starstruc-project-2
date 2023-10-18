@@ -10,26 +10,16 @@ const messageSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    },
-    recipient: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
     }
 }, {
-    timestamps: { 
-        type: Date, 
-        default: Date.now 
-    }
+    timestamps: true
 });
 
 const matchSchema = new Schema({
-    sender: {
+    users: [{
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-    userAvatar: String,
+        ref: 'User'
+    }],
     messages: [messageSchema]
 }, {
     timestamps: true

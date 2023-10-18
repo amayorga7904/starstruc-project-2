@@ -1,19 +1,24 @@
 <%- include('../partials/header') %>
 
-<h1>Conversation with <%= (match.messages && match.messages.length > 0 && match.messages[0].recipient && match.messages[0].recipient.name) || 'Unknown Recipient' %></h1>
+<h1>Conversation</h1>
 
 <ul>
     <% match.messages.forEach(function(message) { %>
+        
+        <% if (message.sender._id.toString() === user._id.toString()) { %>
+                <%= user.name %>
+                <% } else { %>
+                    <%= message.sender.name%>
+                    <% } %>
         <li><strong><%= message.content %></li>
+
+            
     <% }); %>
 </ul>
 
-
-<form action="/matches/<%= match.sender %>/<%= match.recipient %>" method="POST">
-    <textarea name="content"></textarea>
-    <input type="hidden" name="sender" value="<%= user._id %>">
-    <input type="hidden" name="recipient" value="<%= match.messages[0].recipient._id %>">
-    <button type="submit">Send Message</button>
+<form action="/messages/<%= match._id %>" method="POST">
+    <input type="textarea" name="content">
+    <button type="submit">add</button>
 </form>
 
 

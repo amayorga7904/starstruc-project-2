@@ -46,7 +46,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/accounts', accountsRouter)
-app.use('/accounts', messagesRouter);
+app.use('/messages', messagesRouter);
 app.use('/matches', matchesRouter);
 
 

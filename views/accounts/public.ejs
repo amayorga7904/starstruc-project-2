@@ -4,7 +4,7 @@
 
 <h1>everything to see here</h1>
 
-<form>
+
     <% accounts.forEach(function(account) { %>
     <div>Profile Pic
       <img alt="avatar" src="<%= account.user.userAvatar %>" referrerpolicy="no-referrer">
@@ -18,10 +18,10 @@
     <div>Bio:
       <p><%= account.bio %></p>
     </div>
-    <a href="/matches/<%= user._id %>/<%= account._id %>">Conversation</a>
+    <a href="/matches/<%= match._id %>">Conversation</a>
     <% }); %>
     <br>
-</form>
+
   <form action="/matches/new" method="POST">
     <select name="recipient">
       <%- accounts.map(account => 

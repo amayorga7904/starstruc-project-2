@@ -25,7 +25,7 @@ async function showAccounts(req, res) {
     try {
         const senderId = req.params.senderId;
         const recipientId = req.params.recipientId;
-        const match = await Match.findOne({ sender: senderId, 'messages.recipient': recipientId });
+        const match = await Match.findOne();
       const userId = req.user._id;
       let accounts = await Account.find({ user: { $ne: userId } });
       if (!accounts) {
@@ -66,7 +66,7 @@ async function showAccounts(req, res) {
       }
 
 
-      
+
   async function create(req, res) {
       req.body.user = req.user._id;
       req.body.userAvatar = req.user.avatar;
