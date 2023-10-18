@@ -18,7 +18,7 @@
     <div>Bio:
       <p><%= account.bio %></p>
     </div>
-    <a href="/matches">your convos</a>
+    <a href="/matches/<%= user._id %>/<%= account._id %>">Conversation</a>
     <% }); %>
     <br>
 </form>

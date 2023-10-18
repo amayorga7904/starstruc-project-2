@@ -6,13 +6,21 @@ const messageSchema = new Schema({
         type: String,
         required: true
     },
+    sender: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
     recipient: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     }
 }, {
-    timestamps: true
+    timestamps: { 
+        type: Date, 
+        default: Date.now 
+    }
 });
 
 const matchSchema = new Schema({

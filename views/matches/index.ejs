@@ -6,17 +6,16 @@
     <% matches.forEach(function(match) { %>
         <li>
             Sender: <%= match.sender %>
-            <!-- Display other match information as needed -->
             <ul>
                 <% match.messages.forEach(function(message) { %>
                     <li>
                         Content: <%= message.content %>
-                        from: <%= message.recipient %>
-                        <!-- Display other message information as needed -->
+                        Recipient: <%= message.recipient %>
                     </li>
                 <% }); %>
             </ul>
         </li>
+        
     <% }); %>
 </ul>
 
