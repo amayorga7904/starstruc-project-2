@@ -8,9 +8,9 @@ router.get('/', ensureLoggedIn, accountsCtrl.index);
 //GET /accounts/new
 router.get('/new', ensureLoggedIn, accountsCtrl.new);
 router.get('/profile', ensureLoggedIn, accountsCtrl.showProfile);
-
+router.get('/public', ensureLoggedIn, accountsCtrl.showAccounts)
 //accounts/:id
-router.get('/:id', accountsCtrl.show)
+// router.get('/:id', accountsCtrl.show)
 //POST /accounts
 router.post('/', ensureLoggedIn, accountsCtrl.create)
 

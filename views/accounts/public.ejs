@@ -1,0 +1,37 @@
+
+
+<%- include('../partials/header') %>
+
+<h1>everything to see here</h1>
+
+<form>
+    <% accounts.forEach(function(account) { %>
+    <div>Profile Pic
+      <img alt="avatar" src="<%= account.user.userAvatar %>" referrerpolicy="no-referrer">
+    </div>  
+    <div>First Name:
+      <p><%= account.name %></p>
+    </div>
+    <div>Born:
+      <p><%= account.born %></p>
+    </div>
+    <div>Bio:
+      <p><%= account.bio %></p>
+    </div>
+    <a href="/matches">your convos</a>
+    <% }); %>
+    <br>
+</form>
+  <form action="/matches/new" method="POST">
+    <select name="recipient">
+      <%- accounts.map(account => 
+        `<option value="${account._id}">${account.name}</option>`
+      ).join('') %>
+    </select>
+    <textarea name="content"></textarea>
+    <input type="hidden" name="sender" value="<%= user._id %>">
+
+    <button type="submit">Start Chatting!</button>
+  </form>
+  
+<%- include('../partials/footer') %>

@@ -1,25 +1,23 @@
-
-
 <%- include('../partials/header') %>
 
-<h1>everything to see here</h1>
+<h1>Your Matches</h1>
 
-<form>
-    <% accounts.forEach(function(account) { %>
-    <div>Profile Pic
-      <img alt="avatar" src="<%= account.user.userAvatar %>" referrerpolicy="no-referrer">
-    </div>  
-    <div>First Name:
-      <p><%= account.name %></p>
-    </div>
-    <div>Born:
-      <p><%= account.born %></p>
-    </div>
-    <div>Bio:
-      <p><%= account.bio %></p>
-    </div>
-    <a href="/accounts/<%=account._id %>">Start Chatting</a>
+<ul>
+    <% matches.forEach(function(match) { %>
+        <li>
+            Sender: <%= match.sender %>
+            <!-- Display other match information as needed -->
+            <ul>
+                <% match.messages.forEach(function(message) { %>
+                    <li>
+                        Content: <%= message.content %>
+                        from: <%= message.recipient %>
+                        <!-- Display other message information as needed -->
+                    </li>
+                <% }); %>
+            </ul>
+        </li>
     <% }); %>
-    <br>
-</form>
+</ul>
+
 <%- include('../partials/footer') %>

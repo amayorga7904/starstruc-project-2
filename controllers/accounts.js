@@ -6,14 +6,30 @@ module.exports = {
     create,
     index,
     showProfile,
-    show
+    showAccounts
+    // show
   };
 
-  async function show(req, res) {
+//   async function show(req, res) {
+//     try {
+//       const accountId = req.params.id;
+//       const account = await Account.findById(accountId);
+//       res.render('accounts/show', { account });
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).send('Internal Server Error');
+//     }
+//   }
+async function showAccounts(req, res) {
+    console.log('inside the index')
     try {
-      const accountId = req.params.id;
-      const account = await Account.findById(accountId);
-      res.render('accounts/show', { account });
+      const userId = req.user._id;
+      let accounts = await Account.find({ user: { $ne: userId } });
+      if (!accounts) {
+        return res.status(404).send('No accounts found');
+      }
+  
+      res.render('accounts/public', { accounts });
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');
@@ -38,9 +54,9 @@ module.exports = {
   async function newAccount(req, res) {
     let account = await Account.find({ user: req.user._id });
     if (account.length) {
-        res.redirect('/matches')
+        res.redirect('/accounts/public')
     }
-    res.render('accounts/new', { errorMsg: '' })
+    // res.render('accounts/new', { errorMsg: '' })
       }
 
   async function create(req, res) {

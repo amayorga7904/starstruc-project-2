@@ -4,9 +4,10 @@ const router = express.Router();
 const matchesCtrl = require('../controllers/matches');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
-//POST /matches/:id
-// router.get('/:id', ensureLoggedIn, matchesCtrl.show)
+//POST /matches/new
+router.post('/new', ensureLoggedIn, matchesCtrl.createNewMatch)
+console.log('Received a request to create a match');
+router.get('/', ensureLoggedIn, matchesCtrl.index);
 //GET /matches
-router.get('/', ensureLoggedIn, matchesCtrl.index)
 
 module.exports = router;

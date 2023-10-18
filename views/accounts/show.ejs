@@ -21,13 +21,18 @@
           <% } %>
 
         <% if (user) { %>
-  <form method="POST"
-  action="/accounts/<%= account._id %>/messages">
-  <label>Message:</label>
-  <br>
-  <textarea name="content"></textarea>
-  <br>
-  <input type="submit" value="Send">
-</form>
+          <form method="POST" action="/accounts/<%= account._id %>/messages">
+            <!-- Hidden input for recipientId -->
+            <input type="hidden" name="recipient" value="<%= account._id %>">
+            <!-- Hidden input for senderId -->
+            <input type="hidden" name="sender" value="<%= user._id %>">
+          
+            <!-- Textarea for message content -->
+            <label for="messageContent">Message:</label>
+            <br>
+            <textarea id="messageContent" name="content"></textarea>
+            <br>
+            <input type="submit" value="Send">
+          </form>
 <% } %>
 <%- include('../partials/footer') %>
