@@ -64,10 +64,8 @@ async function showAccounts(req, res) {
     let account = await Account.find({ user: req.user._id });
     if (account.length) {
         res.redirect('/accounts/public')
-    } else {
-        res.redirect('/accounts/new')
-    }
-    // res.render('accounts/new', { errorMsg: '' })
+    } 
+    res.render('accounts/new', { errorMsg: '' })
       }
 
 
