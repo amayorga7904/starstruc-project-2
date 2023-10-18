@@ -14,9 +14,12 @@
   <div>Bio:
     <p><%= account.bio %></p>
   </div>
- 
+ <% matches.forEach(match => {%> 
+  <a href="/matches/<%= match._id %>">whatever</a>
+<% }) %>
 </main>
 
-<a href=""><%=  %></a>
+
+
           
 <%- include('../partials/footer') %>

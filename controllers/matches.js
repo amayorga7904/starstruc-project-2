@@ -7,11 +7,11 @@ const Match = require('../models/match');
 module.exports = {
     index,
     createNewMatch,
-    // show,
     showConversation,
     // create
   };
 
+  
 //   async function create(req, res) {
 //     const { senderId, recipientId } = req.params;
 //     const { content, sender, recipient } = req.body;

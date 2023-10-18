@@ -43,13 +43,16 @@ async function showAccounts(req, res) {
 
   async function showProfile(req, res) {
     try {
+        const allMatches = await Match.find({})
+        const foundUserMatches = allMatches.filter(match => match.users.includes(req.user._id))
+        console.log(foundUserMatches)
         let account = await Account.find({ user: req.user._id });
         account = account[0]
         console.log(account)
         if (!account) {
             return res.status(404).send('Account not found');
         }
-        res.render('accounts/profile', { account });
+        res.render('accounts/profile', { account, matches: foundUserMatches });
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');

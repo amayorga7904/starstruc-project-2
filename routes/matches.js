@@ -8,7 +8,7 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 router.post('/new', ensureLoggedIn, matchesCtrl.createNewMatch)
 
 // router.post('/:senderId/:recipientId', ensureLoggedIn, matchesCtrl.create);
-router.get('')
+
 console.log('Received a request to create a match');
 
 router.get('/', ensureLoggedIn, matchesCtrl.index);
