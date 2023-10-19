@@ -15,7 +15,7 @@
     <p><%= account.bio %></p>
   </div>
  <% matches.forEach(match => {%> 
-  <a href="/matches/<%= match._id %>"><%= user._id.toString() %></a>
+  <a href="/matches/<%= match._id %>"> <%=match._id %></a>
 <% }) %>
 <br>
 <br>

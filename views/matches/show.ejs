@@ -2,12 +2,10 @@
 
 <h1>Conversation</h1>
 
+
 <ul>
     <% match.messages.forEach(function(message) { %>
         <% if (message.sender._id.toString() === user._id.toString()) { %>
-                <form action="/match/<%= match._id %>?_method=DELETE" method="POST">
-                  <button type="submit">X</button>
-                </form>
                 <%= user.name %>: <strong><%= message.content %></strong>
              
             <br>
@@ -24,7 +22,11 @@
     <button type="submit">add</button>
 </form>
 
-
+<form action="/matches/<%= match._id %>?_method=DELETE" method="POST">
+    <label>Trynna to Hide Something? Delete'cho Messages Below</label>
+    <br>
+    <button type="submit">X</button>
+  </form>
 
 <%- include('../partials/footer') %>
 

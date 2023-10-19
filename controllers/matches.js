@@ -1,5 +1,4 @@
 
-const Account = require('../models/account');
 const Match = require('../models/match');
 
 
@@ -8,19 +7,19 @@ module.exports = {
     index,
     createNewMatch,
     showConversation,
+    delete: deleteMessage
   };
 
-
+  async function deleteMessage(req, res) {
+    const match = await Match.findById(req.params.id)
+    match.messages.remove(req.body);
+    await match.save();
+    res.redirect(`/matches/${match._id}`);
+}
 
 async function showConversation(req, res) {
     try {
-        const match = await Match.findById(req.params.id).populate({
-            path: 'messages',
-            populate: [
-                { path: 'sender' },
-                { path: 'recipient' }
-            ]
-        });
+        const match = await Match.findById(req.params.id).populate('messages');
         res.render('matches/show', { match, user: req.user });
     } catch (error) {
         console.error(error);

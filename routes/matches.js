@@ -15,5 +15,6 @@ router.get('/', ensureLoggedIn, matchesCtrl.index);
 //GET /matches
 router.get('/:id', ensureLoggedIn, matchesCtrl.showConversation);
 
+router.delete('/:id', ensureLoggedIn, matchesCtrl.delete);
 
 module.exports = router;
