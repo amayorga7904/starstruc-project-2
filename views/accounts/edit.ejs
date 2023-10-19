@@ -4,10 +4,19 @@
 <h3>Why Would you Want to Change Your Name?</h3>
 <h4>Oh, your Birthday Changed?</h4>
 <h5>Who are you Hiding From?</h5>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <form action="/accounts/<%= user._id %>/edit?_method=PUT" method="POST">
-    <label>Bio:</label>
-    <input type="text" name="bio">
-    <button type="submit">Save</button>
+    <label><strong>Bio: </strong></label>
+    <input type="text" placeholder="Insert Cool Bio Here" name="bio">
+    <br>
+    <br>
+    <button type="submit" class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Show Em' All!</button>
 </form>
 
 <%- include('../partials/footer') %>

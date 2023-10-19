@@ -4,36 +4,37 @@
 
 <h1>Feeling Lonely? Bother These People</h1>
 
+<% accounts.forEach(function(account) { %>
+    <div class="card text-bg-info mb-3" style="max-width: 18rem;">
+        <div class="card-header"><%= account.name %></div>
+        <div class="card-body">
+          <p class="card-text"><strong>Born:  </strong><%= account.born %></p>
+          <p class="card-text"><strong>Bio:  </strong> <%= account.bio %></p>
+        </div>
+      </div>
+    <div>
 
-    <% accounts.forEach(function(account) { %>
-    <div>Profile Pic
-      <img alt="avatar" src="<%= account.user.userAvatar %>" referrerpolicy="no-referrer">
-    </div>  
-    <div>First Name:
-      <p><%= account.name %></p>
-    </div>
-    <div>Born:
-      <p><%= account.born %></p>
-    </div>
-    <div>Bio:
-      <p><%= account.bio %></p>
-    </div>
+
     <br>
     <br>
     <br>
     <% }); %>
     <br>
-
+    <label>Pick Who you Want to Bother</label>
   <form action="/matches/new" method="POST">
-    <select name="recipient">
+    <select class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?" name="recipient">
       <%- accounts.map(account => 
         `<option value="${account._id}">${account.name}</option>`
       ).join('') %>
     </select>
-    <textarea name="content"></textarea>
+    <br>
+    <br>
+    <textarea name="content" placeholder="Enter your Best Pickup Line"></textarea>
+    <br>
     <input type="hidden" name="sender" value="<%= user._id %>">
-
-    <button type="submit">Start Chatting!</button>
-  </form>
+    <br>
+    <button type="submit" class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Make a Friend!</button>
+  <br>
+</form>
   
 <%- include('../partials/footer') %>

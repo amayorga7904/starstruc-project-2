@@ -6,25 +6,25 @@
 <br>
 <br>
 <main>
-  <div>Profile Pic
-    <img alt="avatar" src="<%= account.user.userAvatar %>" referrerpolicy="no-referrer">
-  </div>  
-  <div>First Name:
+  <div class="card text-bg-info mb-3" style="max-width: 30rem;">
+  
+  <div class="card-header"><strong>First Name:</strong>
     <p><%= account.name %></p>
   </div>
-  <div>Born:
-    <p><%= account.born %></p>
+  <div  class="card-body"><strong>Born:</strong>
+    <p class="card-text"><%= account.born %></p>
   </div>
-  <div>Bio:
-    <p><%= account.bio %></p>
+  <div  class="card-body"><strong>Bio:</strong>
+    <p class="card-text"><%= account.bio %></p>
   </div>
+  <label><strong>Your Convos</strong></label>
  <% matches.forEach(match => {%> 
-  <a href="/matches/<%= match._id %>"> <%=match._id %></a>
+  <a class="link-offset-2 link-underline link-underline-opacity-0" href="/matches/<%= match._id %>"> <%=match._id %></a>
 <% }) %>
 <br>
 <br>
-
-<a href="/accounts/<%= account._id %>/edit">Edit Your Bio</a>
+  </div>
+<a href="/accounts/<%= account._id %>/edit" class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Make Changes Like People Care</a>
 </main>
 
 

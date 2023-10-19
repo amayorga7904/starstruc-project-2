@@ -61,6 +61,6 @@ async function showConversation(req, res) {
         res.redirect(`/matches/${match._id}`);
     } catch (err) {
         console.error(err);
-        res.status(500).send('Internal Server Error');
+        res.status(500).send('How About you Send a F@#%ing Message?');
     }
 }

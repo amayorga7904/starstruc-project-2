@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<h1>Conversation</h1>
+<h1>Messages with...</h1>
 
 
 <ul>
@@ -18,14 +18,18 @@
 </ul>
 
 <form action="/messages/<%= match._id %>" method="POST">
-    <input type="textarea" name="content">
-    <button type="submit">add</button>
+    <input type="textarea" name="content" placeholder="Don't Get Ghosted">
+    <button type="submit"  class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Send it!</button>
 </form>
-
+<br>
+<br>
+<br>
+<br>
 <form action="/matches/<%= match._id %>?_method=DELETE" method="POST">
     <label>Trynna to Hide Something? Delete'cho Messages Below</label>
     <br>
-    <button type="submit">X</button>
+    <br>
+    <button type="submit"  class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Delete this Convo Because I am a Drug Dealer</button>
   </form>
 
 <%- include('../partials/footer') %>
