@@ -1,18 +1,20 @@
 <%- include('../partials/header') %>
 
-<h1>You can see me</h1>
-
+<h1>Welcome Welcome</h1>
+<br>
+<br>
 <form id="new-form" action="/accounts" method="POST">
-    <label>First Name:</label>
+    <label><strong>Name:</strong></label>
     <input type="text" name="name">
     <br>
-    <label>Date of Birth (yes, include the time of birth):</label>
+    <label><strong>Date of Birth</strong> (yes, include the time of birth):</label>
     <input type="datetime-local" name="born">
     <br>
-    <label>Bio:</label>
+    <label><strong>Bio:</strong></label>
     <input type="text" name="bio">
     <br>
-    <input type="submit" value="Add">
+    <br>
+    <input class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?" type="submit" value="Join!">
 </form>
 
 <p><%= errorMsg %></p>

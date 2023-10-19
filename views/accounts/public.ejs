@@ -1,9 +1,29 @@
-
-
 <%- include('../partials/header') %>
-
 <h1>Feeling Lonely? Bother These People</h1>
-
+<br>
+<div class="row g-3">
+    <div class="col">
+<label>Pick Who you Want to Bother</label>
+<form class="form-control" action="/matches/new" method="POST">
+<select class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?" name="recipient">
+  <%- accounts.map(account => 
+    `<option value="${account._id}">${account.name}</option>`
+  ).join('') %>
+</select>
+<br>
+<br>
+<textarea name="content" placeholder="Enter your Best Pickup Line"></textarea>
+<br>
+<input type="hidden" name="sender" value="<%= user._id %>">
+<br>
+<button type="submit" class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Make a Friend!</button>
+<br>
+</form>
+<br>
+<br>
+</div>
+<div class="col">
+<div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
 <% accounts.forEach(function(account) { %>
     <div class="card text-bg-info mb-3" style="max-width: 18rem;">
         <div class="card-header"><%= account.name %></div>
@@ -13,28 +33,11 @@
         </div>
       </div>
     <div>
-
-
     <br>
     <br>
     <br>
     <% }); %>
-    <br>
-    <label>Pick Who you Want to Bother</label>
-  <form action="/matches/new" method="POST">
-    <select class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?" name="recipient">
-      <%- accounts.map(account => 
-        `<option value="${account._id}">${account.name}</option>`
-      ).join('') %>
-    </select>
-    <br>
-    <br>
-    <textarea name="content" placeholder="Enter your Best Pickup Line"></textarea>
-    <br>
-    <input type="hidden" name="sender" value="<%= user._id %>">
-    <br>
-    <button type="submit" class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Make a Friend!</button>
-  <br>
-</form>
-  
+</div>
+</div>
+</div>
 <%- include('../partials/footer') %>
