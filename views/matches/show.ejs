@@ -5,14 +5,10 @@
 
 <ul>
     <% match.messages.forEach(function(message) { %>
-        <% if (message.sender._id.toString() === user._id.toString()) { %>
-                <%= user.name %>: <strong><%= message.content %></strong>
+       
+                <%= message.sender.name %>: <strong><%= message.content %></strong>
              
-            <br>
-        <% } else { %>
-            <%= user.name %>: <strong><%= message.content %></strong>
-            <br>
-        <% } %>
+    
         
     <% }); %>
 </ul>

@@ -1,5 +1,6 @@
 const Account = require('../models/account');
 const Match = require('../models/match');
+const User = require('../models/user');
 
 module.exports = {
     new: newAccount,
@@ -54,10 +55,11 @@ async function showAccounts(req, res) {
         const match = await Match.findOne();
         const userId = req.user._id;
         let accounts = await Account.find({ user: { $ne: userId } });
-        if (!accounts) {
+        let users = await User.find({ user: { $ne: userId } });
+        if (!users) {
             return res.status(404).send('No accounts found');
         }
-        res.render('accounts/public', { accounts, match });
+        res.render('accounts/public', { users, match, accounts });
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');

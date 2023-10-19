@@ -1,9 +1,9 @@
-# starstruc-project-2
+
 # StarStruC
 
 This is an Express messaging application with basic features. Getting started, assuming you have not created an account, you will sign in with your Google account, then be redirected to created your public profile. you will  be prompted to put in your name, date AND time you were born (yes, time. Explained in NEXT STEP.), and what you want your bio to be (emojis are not authorized). After which, you will see the page where everyone with an account will be displayed. If you know who youre looking for, there is a drop down menu with the list of users on the same page. In Your Account, you can select which conversation you would like to enter after one has been initiated in the same page. you can edit you bio on that same page and delete the conversations within the conversations page.
 
-[play it here](https://starstruc-c587d85d28b5.herokuapp.com/)
+[try it here](https://starstruc-c587d85d28b5.herokuapp.com/)
 
 ## FEATURES
 
@@ -68,10 +68,10 @@ This project dealt with a lot of code that I had not seen before, and utilized t
 
 * The reason why the time is important when entering it during the creation of your new account is because this app will become a match-making dating site that involves match compatability based on your natal/birth chart.
 
-* Profile pictures are a must
+* Profile pictures are a must.
 
-* Currently, you can match with anyone. Code will be added to limit the messages between users based on compatability 
+* Currently, you can match with anyone. Code will be added to limit the messages between users based on compatability.
 
-* merge the user and account models
+* Merge the user and account models.
 
-* Add unique horoscopes for user based on natal/birth chart
+* Add unique horoscopes for user based on natal/birth chart.

@@ -6,8 +6,8 @@
 <label>Pick Who you Want to Bother</label>
 <form class="form-control" action="/matches/new" method="POST">
 <select class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?" name="recipient">
-  <%- accounts.map(account => 
-    `<option value="${account._id}">${account.name}</option>`
+  <%- users.map(user => 
+    `<option value="${user._id}">${user.name}</option>`
   ).join('') %>
 </select>
 <br>
