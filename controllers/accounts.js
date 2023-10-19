@@ -6,20 +6,42 @@ module.exports = {
     create,
     index,
     showProfile,
-    showAccounts
-    // show
+    showAccounts,
+    edit,
+    update
   };
 
-//   async function show(req, res) {
-//     try {
-//       const accountId = req.params.id;
-//       const account = await Account.findById(accountId);
-//       res.render('accounts/show', { account });
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).send('Internal Server Error');
-//     }
-//   }
+  async function update(req, res) {
+    const userId = req.user._id;
+    try {
+        let account = await Account.findOne({ user: userId });
+        if (!account) {
+            return res.status(404).send('Account not found');
+        }
+        account.bio = req.body.bio; 
+        await account.save();
+        res.redirect('/accouns');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+async function edit(req, res) {
+    const userId = req.user._id;
+    try {
+        let account = await Account.findOne({ user: userId });
+        if (!account) {
+            return res.status(404).send('Account not found');
+        }
+        res.render('accounts/edit', { account });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+
 async function showAccounts(req, res) {
     console.log('inside the index')
     try {
@@ -48,7 +70,7 @@ async function showAccounts(req, res) {
         console.log(foundUserMatches)
         let account = await Account.find({ user: req.user._id });
         account = account[0]
-        console.log(account)
+        console.log(account._id)
         if (!account) {
             return res.status(404).send('Account not found');
         }

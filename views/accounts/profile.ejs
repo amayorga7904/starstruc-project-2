@@ -15,10 +15,12 @@
     <p><%= account.bio %></p>
   </div>
  <% matches.forEach(match => {%> 
-  <a href="/matches/<%= match._id %>">whatever</a>
+  <a href="/matches/<%= match._id %>"><%= user._id.toString() %></a>
 <% }) %>
+<br>
+<br>
+<a href="/accounts/<%= account._id %>/edit">Edit Profile</a>
 </main>
-
 
 
           

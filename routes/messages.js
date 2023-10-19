@@ -9,4 +9,6 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 // matches/:id/messages
 router.post('/:id', ensureLoggedIn, messagesCtrl.create);
 
+router.delete('/:id', ensureLoggedIn, messagesCtrl.delete);
+
 module.exports = router;

@@ -4,15 +4,18 @@
 
 <ul>
     <% match.messages.forEach(function(message) { %>
-        
         <% if (message.sender._id.toString() === user._id.toString()) { %>
-                <%= user.name %>
-                <% } else { %>
-                    <%= message.sender.name%>
-                    <% } %>
-        <li><strong><%= message.content %></li>
-
-            
+                <form action="/match/<%= match._id %>?_method=DELETE" method="POST">
+                  <button type="submit">X</button>
+                </form>
+                <%= user.name %>: <strong><%= message.content %></strong>
+             
+            <br>
+        <% } else { %>
+            <%= user.name %>: <strong><%= message.content %></strong>
+            <br>
+        <% } %>
+        
     <% }); %>
 </ul>
 
