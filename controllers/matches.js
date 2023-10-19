@@ -1,7 +1,4 @@
-
 const Match = require('../models/match');
-
-
 
 module.exports = {
     index,
@@ -10,12 +7,16 @@ module.exports = {
     delete: deleteMessage
   };
 
+
+
   async function deleteMessage(req, res) {
     const match = await Match.findById(req.params.id)
     match.messages.remove(req.body);
     await match.save();
     res.redirect(`/matches/${match._id}`);
 }
+
+
 
 async function showConversation(req, res) {
     try {
@@ -26,6 +27,7 @@ async function showConversation(req, res) {
         res.status(500).send('Internal Server Error');
     }
 }
+
 
 
   async function index(req, res) {
