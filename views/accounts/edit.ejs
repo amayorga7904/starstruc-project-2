@@ -13,7 +13,7 @@
 
 <form action="/accounts/<%= user._id %>/edit?_method=PUT" method="POST">
     <label><strong>Bio: </strong></label>
-    <input type="text" placeholder="Insert Cool Bio Here" name="bio">
+    <input type="text" placeholder="Insert Cool Bio Here" name="bio" value="<%= user.bio %>">
     <br>
     <br>
     <button type="submit" class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Show Em' All!</button>

@@ -9,22 +9,24 @@
   <div class="card text-bg-info mb-3" style="max-width: 30rem;">
   
   <div class="card-header"><strong>First Name:</strong>
-    <p><%= account.name %></p>
+    <p><%= user.name %></p>
   </div>
   <div  class="card-body"><strong>Born:</strong>
-    <p class="card-text"><%= account.born %></p>
+    <p class="card-text"><%= user.born %></p>
   </div>
   <div  class="card-body"><strong>Bio:</strong>
-    <p class="card-text"><%= account.bio %></p>
+    <p class="card-text"><%= user.bio %></p>
   </div>
   <label><strong>Your Convos</strong></label>
- <% matches.forEach(match => {%> 
-  <a class="link-offset-2 link-underline link-underline-opacity-0" href="/matches/<%= match._id %>"> <%=match._id %></a>
+  <% matches.forEach(match => {%> 
+  <%= console.log(match.users) %>
+  <a class="link-offset-2 link-underline link-underline-opacity-0" href="/matches/<%= match._id %>"> <%= match.users[1] %></a>
+  
 <% }) %>
 <br>
 <br>
   </div>
-<a href="/accounts/<%= account._id %>/edit" class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Make Changes Like People Care</a>
+<a href="/accounts/<%= user._id %>/edit" class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Make Changes Like People Care</a>
 </main>
 
 

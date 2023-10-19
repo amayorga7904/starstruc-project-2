@@ -16,9 +16,10 @@ router.get('/profile', ensureLoggedIn, accountsCtrl.showProfile);
 
 router.get('/public', ensureLoggedIn, accountsCtrl.showAccounts)
 
-router.post('/', ensureLoggedIn, accountsCtrl.create)
+// router.post('/', ensureLoggedIn, accountsCtrl.create)
 
 router.put('/:id/edit', ensureLoggedIn, accountsCtrl.update)
+router.put('/:id/show', ensureLoggedIn, accountsCtrl.updateAcc)
 
 
 

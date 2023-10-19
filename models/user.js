@@ -7,6 +7,12 @@ const mongoose = require('mongoose');
     type: String,
     required: true,
    },
+   born: {
+    type: Date
+   },
+   bio: {
+    type: String
+   },
    email: String,
    avatar: String
  }, {

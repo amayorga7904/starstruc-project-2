@@ -9,17 +9,29 @@ module.exports = {
     showProfile,
     showAccounts,
     edit,
-    update
+    update,
+    updateAcc
   };
-
-
+  async function updateAcc(req, res) {
+    try {
+        const user = await User.findById(req.user._id).exec();
+        user.name = req.body.name
+        user.born = req.body.born
+        user.bio = req.body.bio
+        await user.save();
+        res.redirect('/accounts/public');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+}
 
   async function update(req, res) {
     const userId = req.user._id;
     const newBio = req.body.bio;
     try {
-        let account = await Account.findOneAndUpdate({ user: userId }, { bio: newBio }, { new: true });
-        if (!account) {
+        let user = await User.findOneAndUpdate({ user: userId }, { bio: newBio }, { new: true });
+        if (!user) {
             return res.status(404).send('Account not found');
         }
         res.redirect('/accounts/profile');
@@ -34,11 +46,11 @@ module.exports = {
 async function edit(req, res) {
     const userId = req.user._id;
     try {
-        let account = await Account.find(userId);
-        if (!account) {
+        let user = await User.find(userId);
+        if (!user) {
             return res.status(404).send('Account not found');
         }
-        res.render('accounts/edit', { account });
+        res.render('accounts/edit', { user });
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
@@ -54,12 +66,12 @@ async function showAccounts(req, res) {
         const recipientId = req.params.recipientId;
         const match = await Match.findOne();
         const userId = req.user._id;
-        let accounts = await Account.find({ user: { $ne: userId } });
+   
         let users = await User.find({ user: { $ne: userId } });
         if (!users) {
             return res.status(404).send('No accounts found');
         }
-        res.render('accounts/public', { users, match, accounts });
+        res.render('accounts/public', { users, match });
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
@@ -72,14 +84,14 @@ async function showAccounts(req, res) {
         const allMatches = await Match.find({})
         const foundUserMatches = allMatches.filter(match => match.users.includes(req.user._id))
         console.log(foundUserMatches)
-        let account = await Account.find({ user: req.user._id });
-        account = account[0]
-        console.log(account)
-        console.log(account._id)
-        if (!account) {
+        let user = await User.find({ user: req.user._id });
+        const userId = req.user._id
+        const receiverId = req.body.recipient
+     
+        if (!user) {
             return res.status(404).send('Account not found');
         }
-        res.render('accounts/profile', { account, matches: foundUserMatches });
+        res.render('accounts/profile', { matches: foundUserMatches, userId, receiverId });
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
@@ -111,8 +123,8 @@ async function showAccounts(req, res) {
 
 
   async function newAccount(req, res) {
-    let account = await Account.find({ user: req.user._id });
-    if (account.length) {
+    let user = await User.find( req.user._id );
+    if (user.length) {
         res.redirect('/accounts/public')
     } 
     res.render('accounts/new', { errorMsg: '' })
