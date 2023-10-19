@@ -13,24 +13,25 @@ module.exports = {
 
   async function update(req, res) {
     const userId = req.user._id;
+    const newBio = req.body.bio;
+
     try {
-        let account = await Account.findOne({ user: userId });
+        let account = await Account.findOneAndUpdate({ user: userId }, { bio: newBio }, { new: true });
         if (!account) {
             return res.status(404).send('Account not found');
         }
-        account.bio = req.body.bio; 
-        await account.save();
-        res.redirect('/accouns');
+        res.redirect('/accounts/profile');
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
     }
 }
 
+
 async function edit(req, res) {
     const userId = req.user._id;
     try {
-        let account = await Account.findOne({ user: userId });
+        let account = await Account.find(userId);
         if (!account) {
             return res.status(404).send('Account not found');
         }
@@ -65,16 +66,26 @@ async function showAccounts(req, res) {
 
   async function showProfile(req, res) {
     try {
-        const allMatches = await Match.find({})
-        const foundUserMatches = allMatches.filter(match => match.users.includes(req.user._id))
-        console.log(foundUserMatches)
-        let account = await Account.find({ user: req.user._id });
-        account = account[0]
-        console.log(account._id)
+        const allMatches = await Match.find({});
+        
+        // Convert user IDs in match objects to string representations
+        const matchesWithUsersAsString = allMatches.map(match => {
+            const users = match.users.map(userId => (userId ? userId.toString() : null));
+            return { ...match._doc, users };
+        }).filter(match => match.users && match.users.includes(req.user._id.toString()));
+        console.log(matchesWithUsersAsString)
+        console.log(req.user._id)
+
+        if (matchesWithUsersAsString.length === 0) {
+            return res.status(404).send('No matches found for the user');
+        }
+
+        const account = await Account.findOne({ user: req.user._id });
         if (!account) {
             return res.status(404).send('Account not found');
         }
-        res.render('accounts/profile', { account, matches: foundUserMatches });
+        
+        res.render('accounts/profile', { account, matches: matchesWithUsersAsString });
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
@@ -82,12 +93,13 @@ async function showAccounts(req, res) {
 }
 
 
+
   async function newAccount(req, res) {
     let account = await Account.find({ user: req.user._id });
     if (account.length) {
         res.redirect('/accounts/public')
     } 
-    res.render('accounts/new', { errorMsg: '' })
+    res.render('accounts/new')
       }
 
 

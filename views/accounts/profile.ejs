@@ -1,6 +1,10 @@
 <%- include('../partials/header') %>
-<h1>I can see you</h1>
-
+<h1>This is You</h1>
+<h2>Shocker, Right?</h2>
+<br>
+<br>
+<br>
+<br>
 <main>
   <div>Profile Pic
     <img alt="avatar" src="<%= account.user.userAvatar %>" referrerpolicy="no-referrer">
@@ -19,7 +23,8 @@
 <% }) %>
 <br>
 <br>
-<a href="/accounts/<%= account._id %>/edit">Edit Profile</a>
+
+<a href="/accounts/<%= account._id %>/edit">Edit Your Bio</a>
 </main>
 
 

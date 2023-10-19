@@ -1,6 +1,10 @@
 <%- include('../partials/header') %>
-
-<form action="/accounts/<%= account._id %>?_method=PUT" method="POST">
+<h1>Change your Bio</h1>
+<h2>Yes, Only your Bio</h2>
+<h3>Why Would you Want to Change Your Name?</h3>
+<h4>Oh, your Birthday Changed?</h4>
+<h5>Who are you Hiding From?</h5>
+<form action="/accounts/<%= user._id %>/edit?_method=PUT" method="POST">
     <label>Bio:</label>
     <input type="text" name="bio">
     <button type="submit">Save</button>
