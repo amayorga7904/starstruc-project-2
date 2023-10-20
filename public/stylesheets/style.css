@@ -35,3 +35,11 @@ a {
 #get-in {
   color: blueviolet;
 }
+
+#small-text {
+  font-size: 80%; /* 80% of the parent element's font size */
+}
+
+#your-profile {
+  margin-left: 196px;
+}
