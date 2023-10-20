@@ -1,22 +1,12 @@
 <%- include('../partials/header') %>
-
-<h1>Welcome Welcome</h1>
-<br>
-<br>
-<form id="new-form" action="/accounts" method="POST">
-    <label><strong>Name:</strong></label>
-    <input type="text" name="name">
+    <h1>Welcome Welcome</h1><br>
     <br>
-    <label><strong>Date of Birth</strong> (yes, include the time of birth):</label>
-    <input type="datetime-local" name="born">
-    <br>
-    <label><strong>Bio:</strong></label>
-    <input type="text" name="bio">
-    <br>
-    <br>
-    <input class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?" type="submit" value="Join!">
-</form>
-
-<p><%= errorMsg %></p>
-
+    <form action="/accounts" id="new-form" method="post" name="new-form">
+        <label><strong>Name:</strong></label> <input name="name" type="text"><br>
+        <label><strong>Date of Birth</strong> (yes, include the time of birth):</label> <input name="born" type="datetime-local"><br>
+        <label><strong>Bio:</strong></label> <input name="bio" type="text"><br>
+        <br>
+        <input class="btn btn-lg btn-info" data-bs-content="And here's some amazing content. It's very engaging. Right?" data-bs-title="Popover title" data-bs-toggle="popover" type="submit" value="Join!">
+    </form>
+    <p><%= errorMsg %></p>
 <%- include('../partials/footer') %>

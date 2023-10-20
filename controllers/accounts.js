@@ -9,24 +9,13 @@ module.exports = {
     showAccounts,
     edit,
     update,
-    // updateAcc,
     create
   };
-//   async function updateAcc(req, res) {
-//     try {
-//         const user = await User.findById(req.user._id)
-//         user.name = req.body.name
-//         user.born = req.body.born
-//         user.bio = req.body.bio
-//         await user.save();
-//         res.redirect('/accounts/public');
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// }
+
+
+
 async function update(req, res) {
-    const userId = req.user._id; // Use req.user._id to get the user ID
+    const userId = req.user._id; 
     const newBio = req.body.bio;
     try {
         let user = await User.findOneAndUpdate({ _id: userId }, { bio: newBio }, { new: true });
@@ -98,28 +87,6 @@ async function showAccounts(req, res) {
         res.status(500).send('Internal Server Error');
     }
 }
-//   async function showProfile(req, res) {
-//     try {
-//         const allMatches = await Match.find({});
-//         const matchesWithUsersAsString = allMatches.map(match => {
-//             const users = match.users.map(userId => (userId ? userId.toString() : null));
-//             return { ...match._doc, users };
-//         }).filter(match => match.users && match.users.includes(req.user._id.toString()));
-//         console.log(matchesWithUsersAsString)
-//         console.log(req.user._id)
-//         if (matchesWithUsersAsString.length === 0) {
-//             return res.status(404).send('No matches found for the user');
-//         }
-//         const account = await Account.findOne({ user: req.user._id });
-//         if (!account) {
-//             return res.status(404).send('Account not found');
-//         }
-//         res.render('accounts/profile', { account, matches: matchesWithUsersAsString });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// }
 
 
 
@@ -152,6 +119,7 @@ async function showAccounts(req, res) {
   }
 
 
+  
   function index(req, res) {
     Account.find({})
     .then((accounts) => {

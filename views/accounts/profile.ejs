@@ -1,33 +1,24 @@
 <%- include('../partials/header') %>
-<h1>This is You</h1>
-<h2>Shocker, Right?</h2>
-<br>
-<br>
-<br>
-<br>
-<main>
-  <div class="card text-bg-info mb-3" style="max-width: 30rem;">
-  
-  <div class="card-header"><strong>First Name:</strong>
-    <p><%= user.name %></p>
-  </div>
-  <div  class="card-body"><strong>Born:</strong>
-    <p class="card-text"><%= user.born %></p>
-  </div>
-  <div  class="card-body"><strong>Bio:</strong>
-    <p class="card-text"><%= user.bio %></p>
-  </div>
-  <label><strong>Your Convos</strong></label>
-  <% matches.forEach(match => {%> 
-  <%= console.log(user._id) %>
-  <a class="link-offset-2 link-underline link-underline-opacity-0" href="/matches/<%= match._id %>">Guess Who This Is</a>
-<% }) %>
-<br>
-<br>
-  </div>
-<a href="/accounts/<%= user._id %>/edit" class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Make Changes Like People Care</a>
+	<h1>This is You</h1>
+	<h2>Shocker, Right?</h2><br>
+	<br>
+	<br>
+	<br>
+	<main>
+		<div class="card text-bg-info mb-3" style="max-width: 30rem;">
+			<div class="card-header">
+				<strong>First Name:</strong>
+				<p><%= user.name %></p>
+			</div>
+			<div class="card-body">
+				<strong>Born:</strong>
+				<p class="card-text"><%= user.born %></p>
+			</div>
+			<div class="card-body">
+				<strong>Bio:</strong>
+				<p class="card-text"><%= user.bio %></p>
+      </div><label><strong>Your Convos</strong></label> <%matches.forEach(match => {%> <a class="link-offset-2 link-underline link-underline-opacity-0" href="/matches/<%= match._id %>">Guess Who This Is</a> <%}) %><br>
+      <br>
+  </div><a href="/accounts/<%= user._id %>/edit" class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Make Changes Like People Care</a>
 </main>
-
-
-          
 <%- include('../partials/footer') %>
