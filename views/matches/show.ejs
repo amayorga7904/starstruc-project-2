@@ -1,6 +1,8 @@
 <%- include('../partials/header') %>
     <div id="messages">
         <h1>Messages</h1>
+        <br>
+        <br>
         <ul>
             <% match.messages.forEach(function(message) { %>
             <%= message.sender.name %>: <strong><%= message.content %></strong>
@@ -13,6 +15,10 @@
         </form>
         <br>
         <br>
+        <p><small>**I'm sensitive**</small></p>
+        <p><small>*Please don't sent blank messages*</small></p>
+        <p><small>Your account will get hacked, and your identity will bet stolen</small></p>
+        <p><small>Kidding, but still, don't do it</small></p>
         <br>
         <br>
         <form action="/matches/<%= match._id %>?_method=DELETE" method="POST">
