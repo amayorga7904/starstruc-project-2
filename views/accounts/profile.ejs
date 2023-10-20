@@ -19,9 +19,8 @@
   </div>
   <label><strong>Your Convos</strong></label>
   <% matches.forEach(match => {%> 
-  <%= console.log(match.users) %>
-  <a class="link-offset-2 link-underline link-underline-opacity-0" href="/matches/<%= match._id %>"> <%= match.users[1] %></a>
-  
+  <%= console.log(user._id) %>
+  <a class="link-offset-2 link-underline link-underline-opacity-0" href="/matches/<%= match._id %>">Guess Who This Is</a>
 <% }) %>
 <br>
 <br>

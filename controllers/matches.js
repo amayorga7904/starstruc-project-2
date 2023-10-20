@@ -24,7 +24,9 @@ async function showConversation(req, res) {
             path: 'messages',
             populate:  { path: 'sender' }
             
-        });
+        })
+        .populate('users');
+        console.log(match.users)
         res.render('matches/show', { match, user: req.user });
     } catch (error) {
         console.error(error);
