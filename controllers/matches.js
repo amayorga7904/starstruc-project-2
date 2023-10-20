@@ -23,10 +23,8 @@ async function showConversation(req, res) {
         const match = await Match.findById(req.params.id).populate({
             path: 'messages',
             populate:  { path: 'sender' }
-            
         })
         .populate('users');
-        console.log(match.users)
         res.render('matches/show', { match, user: req.user });
     } catch (error) {
         console.error(error);
@@ -52,9 +50,6 @@ async function showConversation(req, res) {
   async function createNewMatch(req, res) {
     userId = req.user._id
     receiverId = req.body.recipient
-    console.log(req.body);
-    console.log(userId);
-    console.log(receiverId);
     const { sender, recipient, content } = req.body;
     try {
         const match = new Match({
@@ -65,7 +60,6 @@ async function showConversation(req, res) {
             }]
         });
         await match.save();
-        console.log(match)
         res.redirect(`/matches/${match._id}`);
     } catch (err) {
         console.error(err);

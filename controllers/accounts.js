@@ -4,7 +4,6 @@ const User = require('../models/user');
 
 module.exports = {
     new: newAccount,
-    index,
     showProfile,
     showAccounts,
     edit,
@@ -39,7 +38,6 @@ async function edit(req, res) {
         if (!user) {
             return res.status(404).send('Account not found');
         }
-        console.log("this is the user", user)
         res.render('accounts/edit', { user });
     } catch (error) {
         console.error(error);
@@ -50,13 +48,11 @@ async function edit(req, res) {
 
 
 async function showAccounts(req, res) {
-    console.log('inside the index')
     try {
         const senderId = req.params.senderId;
         const recipientId = req.params.recipientId;
         const match = await Match.findOne();
         const userId = req.user._id;
-   
         let users = await User.find({ user: { $ne: userId } });
         if (!users) {
             return res.status(404).send('No accounts found');
@@ -73,11 +69,9 @@ async function showAccounts(req, res) {
     try {
         const allMatches = await Match.find({})
         const foundUserMatches = allMatches.filter(match => match.users.includes(req.user._id))
-        console.log(foundUserMatches)
         let user = await User.find({ user: req.user._id });
         const userId = req.user._id
         const receiverId = req.body.recipient
-     
         if (!user) {
             return res.status(404).send('Account not found');
         }
@@ -109,7 +103,6 @@ async function showAccounts(req, res) {
       user.bio = req.body.bio
     try {
       await Account.create(req.body);
-      console.log('account created')
       await user.save();
       res.redirect('/accounts/public');
     } catch (error) {
@@ -119,13 +112,5 @@ async function showAccounts(req, res) {
   }
 
 
-  
-  function index(req, res) {
-    Account.find({})
-    .then((accounts) => {
-        res.render('accounts/index', { accounts })
-    })
-    .catch((err) => {
-        console.log(err)
-    })
- }
+
+ 

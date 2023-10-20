@@ -8,10 +8,8 @@ module.exports = {
 
   async function create(req, res) {
     const senderId = req.user._id
-    console.log(senderId)
     const match = await Match.findById(req.params.id)
     const content = req.body.content
-
     match.messages.push({
         content,
         sender: senderId
