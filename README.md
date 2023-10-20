@@ -15,19 +15,6 @@ This is an Express messaging application with basic features. Getting started, a
 
 * Sign in with google oauth 
 
-### FAVORITE FUNCTION 
-
-```js
-function getKeyCode(e) {
-    if (e.keyCode >= 65 && e.keyCode <= 90) {
-        if (currentWord.includes(e.key)) {
-            currentWord.forEach(function(letter, i) {
-                if (letter === e.key) {
-                    openSpace.querySelectorAll('li')[i].innerText = letter.toUpperCase()
-                }
-            })
-```
-
 ### BIGGEST CHALLENGE
 
 The biggest challenge was the main feature of the app, the conversations. I could not get the functionality of seeing the other accounts' messages from the logged-in users' side. 
@@ -56,12 +43,12 @@ This project dealt with a lot of code that I had not seen before, and utilized t
 
 ## APP WALK-THROUGH
 
-![TITLE-SCREEN](screenshots/Screenshot%202023-09-28%20at%209.53.14%20AM.png)
-![HOME-SCREEN](screenshots/Screenshot%202023-09-28%20at%209.52.50%20AM.png)
-![YOUR-ACCOUNT](screenshots/Screenshot%202023-09-28%20at%209.54.42%20AM.png)
-![CONVERSATION-SCREEN](screenshots/Screenshot%202023-09-28%20at%203.27.47%20PM%20(2).png)
-![NEW-ACCOUNT](screenshots/Screenshot%202023-09-28%20at%209.56.07%20AM.png)
-![EDIT-BIO](screenshots/Screenshot%202023-09-28%20at%209.56.24%20AM.png)
+![TITLE-SCREEN](<Screenshot 2023-10-20 at 12.27.53 AM.png>)
+![NEW-ACCOUNT](<Screenshot 2023-10-20 at 12.29.32 AM.png>)
+![HOME-SCREEN](<Screenshot 2023-10-20 at 12.38.23 AM.png>)
+![YOUR-ACCOUNT](<Screenshot 2023-10-20 at 12.36.13 AM.png>)
+![CONVERSATION-SCREEN](<Screenshot 2023-10-20 at 12.35.33 AM.png>)
+![EDIT-BIO](<Screenshot 2023-10-20 at 12.33.57 AM.png>)
 
 
 ## NEXT STEPS
@@ -71,7 +58,5 @@ This project dealt with a lot of code that I had not seen before, and utilized t
 * Profile pictures are a must.
 
 * Currently, you can match with anyone. Code will be added to limit the messages between users based on compatability.
-
-* Merge the user and account models.
 
 * Add unique horoscopes for user based on natal/birth chart.
