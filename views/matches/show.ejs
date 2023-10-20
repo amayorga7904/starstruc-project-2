@@ -1,23 +1,25 @@
 <%- include('../partials/header') %>
-    <h1>Messages</h1>
-    <ul>
-        <% match.messages.forEach(function(message) { %>
-        <%= message.sender.name %>: <strong><%= message.content %></strong>
-        <br>
-        <% }); %>
-    </ul>
-    <form action="/messages/<%= match._id %>" method="POST">
-        <input type="textarea" name="content" placeholder="Don't Get Ghosted">
-        <button type="submit"  class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Send it!</button>
-    </form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <form action="/matches/<%= match._id %>?_method=DELETE" method="POST">
+    <div id="messages">
+        <h1>Messages</h1>
+        <ul>
+            <% match.messages.forEach(function(message) { %>
+            <%= message.sender.name %>: <strong><%= message.content %></strong>
+            <br>
+            <% }); %>
+        </ul>
+        <form action="/messages/<%= match._id %>" method="POST">
+            <input type="textarea" name="content" placeholder="Don't Get Ghosted">
+            <button type="submit"  class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Send it!</button>
+        </form>
         <br>
         <br>
-        <button type="submit"  class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Delete this Convo Because I am a Drug Dealer</button>
-    </form>
+        <br>
+        <br>
+        <form action="/matches/<%= match._id %>?_method=DELETE" method="POST">
+            <br>
+            <br>
+            <button type="submit"  class="btn btn-lg btn-info" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Delete this Convo Because I am a Drug Dealer</button>
+        </form>
+    </div>  
 <%- include('../partials/footer') %>
 
